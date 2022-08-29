@@ -9,10 +9,6 @@ public class FileReader {
         String[] ageLine = null;
         String[] emailLine = null;
         String[] phoneLine = null;
-        String name = "";
-        Integer age = 0;
-        String email = "";
-        Long phone = 0L;
 
         try (FileInputStream input = new FileInputStream(file)) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(input));
@@ -24,12 +20,9 @@ public class FileReader {
             e.printStackTrace();
         }
         if (nameLine != null && ageLine != null && emailLine != null && phoneLine != null) {
-            name = nameLine[1];
-            age = Integer.valueOf(ageLine[1]);
-            email = emailLine[1];
-            phone = Long.valueOf(phoneLine[1]);
+            return new Profile(nameLine[1], Integer.valueOf(ageLine[1]), emailLine[1], Long.valueOf(phoneLine[1]));
         }
-        return new Profile(name, age, email, phone);
+        return new Profile();
     }
 
 }
